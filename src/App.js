@@ -1,11 +1,28 @@
 import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import HomePage from "./pages/HomePage";
+import { CreateContainer, MainContainer } from "./components";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+    children: [
+      {
+        index: true,
+        element: <MainContainer />,
+      },
+      {
+        path: "createItem",
+        element: <CreateContainer />,
+      },
+    ],
+  },
+]);
 
 const App = () => {
-  return (
-    <div className="w-screen h-screen flex items-center justify-center text-blue-600">
-      App
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
