@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
-import { CreateContainer, MainContainer } from "./components";
 import { useDispatch } from "react-redux";
+import { CreateContainer, MainContainer } from "./components/index";
 
 const router = createBrowserRouter([
   {
