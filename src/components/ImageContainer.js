@@ -2,7 +2,7 @@ import React from "react";
 
 const ImageContainer = (props) => {
   return (
-    <div className="w-190 h-190 relative bg-cardOverlay backdrop-blur-md rounded-lg">
+    <div className="w-190 h-190 relative bg-cardOverlay backdrop-blur-md rounded-lg m-auto">
       <img src={props.src} alt="" className="object-cover -translate-y-20" />
     </div>
   );
