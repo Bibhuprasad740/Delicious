@@ -9,7 +9,6 @@ const uiSlice = createSlice({
   initialState: initialUiState,
   reducers: {
     toggleMenu(state) {
-      console.log(process.env.LINK);
       state.showMenu = !state.showMenu;
     },
     hideMenu(state) {

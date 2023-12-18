@@ -3,14 +3,13 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB2aT0hPBLCaHuTnPdZd2W5PDInutIyZAE",
-  authDomain: "deli-29601.firebaseapp.com",
-  databaseURL:
-    "https://deli-29601-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "deli-29601",
-  storageBucket: "deli-29601.appspot.com",
-  messagingSenderId: "356271969735",
-  appId: "1:356271969735:web:4d95b9eb7724f34c24b5e2",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREABSE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREABSE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREABSE_APP_ID,
 };
 
 // Initialize Firebase
