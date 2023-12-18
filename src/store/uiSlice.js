@@ -9,6 +9,7 @@ const uiSlice = createSlice({
   initialState: initialUiState,
   reducers: {
     toggleMenu(state) {
+      console.log("build check");
       state.showMenu = !state.showMenu;
     },
     hideMenu(state) {
