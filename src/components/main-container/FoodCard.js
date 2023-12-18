@@ -1,5 +1,4 @@
 import React from "react";
-import IcecreamImage from "../../assets/images/i1.png";
 
 const FoodCard = (props) => {
   return (
@@ -11,7 +10,7 @@ const FoodCard = (props) => {
         {props.name}
       </p>
       {/* description */}
-      <p className="text-sm text-center lg:text-sm text-lighttextGray font-semibold my-1 lg:my-3 ">
+      <p className="text-[10px] text-center lg:text-sm text-lighttextGray font-semibold my-1 lg:my-3 ">
         {props.description}
       </p>
       {/* price */}

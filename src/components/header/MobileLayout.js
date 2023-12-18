@@ -1,21 +1,30 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { uiActions } from "../../store/uiSlice";
 
 import Logo from "../../assets/images/logo.png";
 import ProfileImage from "../../assets/images/avatar.png";
 import { MdAdd, MdLogout, MdShoppingBasket } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const animationScale = 0.6;
 
 const MobileLayout = (props) => {
   const user = useSelector((state) => state.auth.user);
+  const showMenu = useSelector((state) => state.ui.showMenu);
+  const dispatch = useDispatch();
+
+  const hideMenu = () => {
+    dispatch(uiActions.hideMenu());
+  };
 
   const addProductButton = (
-    <p className="px-4 py-2 flex justify-center items-center gap-3 cursor-pointer hover:bg-orange-200 transition-all duration-100 ease-in-out text-textColor text-base">
-      New Item <MdAdd />
-    </p>
+    <Link to="/createItem">
+      <p className="px-4 py-2 flex justify-center items-center gap-3 cursor-pointer hover:bg-orange-200 transition-all duration-100 ease-in-out text-textColor text-base">
+        New Item <MdAdd />
+      </p>
+    </Link>
   );
 
   const dropdown = (
@@ -24,12 +33,12 @@ const MobileLayout = (props) => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.6 }}
       className="flex flex-col w-40 bg-orange-100 shadow-xl rounded-lg absolute top-12 right-0"
+      onClick={hideMenu}
     >
-      <Link to="/createItem">
-        {user &&
-          user.email === "sahoo.bibhuprasad740@gmail.com" &&
-          addProductButton}
-      </Link>
+      {user &&
+        user.email === "sahoo.bibhuprasad740@gmail.com" &&
+        addProductButton}
+
       {/* navbar items */}
       <ul className="flex flex-col items-center">
         <li className="text-base text-textColor w-full text-center hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-orange-200 px-4 py-2">
@@ -79,9 +88,15 @@ const MobileLayout = (props) => {
             src={user ? user.photoURL : ProfileImage}
             className="w-10 min-w-[40px] h-10 min-h-[40px] cursor-pointer drop-shadow-xl rounded-full"
             alt="profile_image"
-            onClick={user ? props.showDropdownHandler : props.login}
+            onClick={
+              user
+                ? () => {
+                    dispatch(uiActions.toggleMenu());
+                  }
+                : props.login
+            }
           />
-          {props.showDropdown && dropdown}
+          {showMenu && dropdown}
         </div>
       </div>
     </div>
