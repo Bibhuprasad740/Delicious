@@ -2,6 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialUiState = {
   showMenu: false,
+  alertStatus: "danger",
+  alertMessage: null,
+  isLoading: false,
 };
 
 const uiSlice = createSlice({
@@ -9,11 +12,16 @@ const uiSlice = createSlice({
   initialState: initialUiState,
   reducers: {
     toggleMenu(state) {
-      console.log("build check");
       state.showMenu = !state.showMenu;
     },
     hideMenu(state) {
       state.showMenu = false;
+    },
+    setAlertMessage(state, action) {
+      state.alertMessage = action.payload;
+    },
+    setIsLoading(state, action) {
+      state.isLoading = action.payload;
     },
   },
 });

@@ -2,43 +2,10 @@ import React from "react";
 import BackgroundImage from "../../assets/images/heroBg.png";
 import FoodCard from "./FoodCard";
 
-import Icecream from "../../assets/images/i1.png";
-import Strawberry from "../../assets/images/f1.png";
-import Chicken from "../../assets/images/c1.png";
-import Fish from "../../assets/images/fi1.png";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../../store/uiSlice";
 
-const DUMMY_FOOD_DATA = [
-  {
-    id: 1,
-    name: "Icecream",
-    description: "Chocolate & Vanilla",
-    price: 200,
-    imageSrc: Icecream,
-  },
-  {
-    id: 2,
-    name: "Strawberries",
-    description: "Fresh Strawberries",
-    price: 80,
-    imageSrc: Strawberry,
-  },
-  {
-    id: 3,
-    name: "Chicken",
-    description: "Mixed Chicken Kabab",
-    price: 100,
-    imageSrc: Chicken,
-  },
-  {
-    id: 4,
-    name: "Fish",
-    description: "Fish Kabab",
-    price: 120,
-    imageSrc: Fish,
-  },
-];
+import { DUMMY_FOOD_DATA } from "../../DummyData";
 
 const ImageSection = () => {
   const dispatch = useDispatch();
