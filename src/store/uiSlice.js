@@ -6,6 +6,7 @@ const initialUiState = {
   alertMessage: null,
   isLoading: false,
   foodRowRef: null,
+  currentSelectedCategory: "chicken",
 };
 
 const uiSlice = createSlice({
@@ -26,6 +27,9 @@ const uiSlice = createSlice({
     },
     setFoodRowRef(state, action) {
       state.foodRowRef = action.payload;
+    },
+    setCurrentSelectedCategory(state, action) {
+      state.currentSelectedCategory = action.payload;
     },
   },
 });

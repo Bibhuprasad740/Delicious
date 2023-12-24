@@ -1,4 +1,4 @@
-import { FoodHeaderTitle } from "../../index";
+import { FoodHeaderTitle, FoodRow } from "../../index";
 import MenuOptions from "./MenuOptions";
 
 const MenuSection = () => {
@@ -11,6 +11,8 @@ const MenuSection = () => {
         {/* menu options */}
         <MenuOptions />
       </div>
+      {/* menu content according to category */}
+      <div className="w-full">{/* <FoodRow /> */}</div>
     </section>
   );
 };

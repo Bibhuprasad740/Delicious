@@ -1,10 +1,17 @@
 import React from "react";
 import { IoFastFood } from "react-icons/io5";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { uiActions } from "../../../store/uiSlice";
 
-const MenuOption = ({ name, onClick, selectedCategory, urlParse }) => {
+const MenuOption = ({ name, urlParse }) => {
+  const dispatch = useDispatch();
+
+  const selectedCategory = useSelector(
+    (state) => state.ui.currentSelectedCategory
+  );
   const menuOptionClickHandler = () => {
-    onClick(urlParse);
+    dispatch(uiActions.setCurrentSelectedCategory(urlParse));
   };
   return (
     <motion.div
