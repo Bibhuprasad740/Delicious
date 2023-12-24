@@ -5,6 +5,7 @@ const initialUiState = {
   alertStatus: "danger",
   alertMessage: null,
   isLoading: false,
+  foodRowRef: null,
 };
 
 const uiSlice = createSlice({
@@ -22,6 +23,9 @@ const uiSlice = createSlice({
     },
     setIsLoading(state, action) {
       state.isLoading = action.payload;
+    },
+    setFoodRowRef(state, action) {
+      state.foodRowRef = action.payload;
     },
   },
 });

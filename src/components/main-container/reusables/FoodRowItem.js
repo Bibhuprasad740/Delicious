@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const FoodRowItem = ({ imageSrc, name, price, calories }) => {
   return (
-    <div className="w-300 min-w-[300px] md:w-340 md:min-w-[340px] h-auto my-12 bg-cardOverlay rounded-lg p-4 hover:shadow-lg backdrop-blur-lg">
+    <div className="w-300 min-w-[300px] md:w-340 md:min-w-[340px] h-[225px] my-12 bg-cardOverlay rounded-lg p-4 hover:shadow-lg backdrop-blur-lg flex flex-col items-center justify-between">
       {/* image container */}
       <div className="w-full flex items-center justify-between">
         {/* image */}
