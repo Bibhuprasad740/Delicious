@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUserFromLocalStorage } from "../utilities/localStorageMethods";
+import { fetchDataFromLocalStorage } from "../utilities/localStorageMethods";
 
 const authInitialState = {
-  user: fetchUserFromLocalStorage(),
+  user: fetchDataFromLocalStorage("user"),
   addresses: null,
   orders: null,
 };

@@ -21,12 +21,13 @@ const MenuOption = ({ name, urlParse }) => {
       } hover:bg-red-700`}
       onClick={menuOptionClickHandler}
     >
-      {/* Icon */}
+      {/* Icon outer circle */}
       <div
         className={`w-10 h-10 rounded-full ${
           selectedCategory === urlParse ? `bg-card` : `bg-red-700`
         } bg-red-700 group-hover:bg-card flex items-center justify-center`}
       >
+        {/* Icon */}
         <IoFastFood
           className={`${
             selectedCategory === urlParse ? `text-textColor` : `text-card`

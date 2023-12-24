@@ -8,16 +8,24 @@ import { MdAdd, MdLogout, MdShoppingBasket } from "react-icons/md";
 
 import Logo from "../../assets/images/logo.png";
 import ProfileImage from "../../assets/images/avatar.png";
+import { userActivityActions } from "../../store/userActivitySlice";
 
 const animationScale = 0.6;
 
 const PcLayout = (props) => {
   const user = useSelector((state) => state.auth.user);
   const showMenu = useSelector((state) => state.ui.showMenu);
+  const totalQuantity = useSelector(
+    (state) => state.userActivity.totalQuantity
+  );
   const dispatch = useDispatch();
 
   const hideMenu = () => {
     dispatch(uiActions.hideMenu());
+  };
+
+  const showCartHandler = () => {
+    dispatch(userActivityActions.showCart());
   };
 
   const addProductButton = (
@@ -94,11 +102,16 @@ const PcLayout = (props) => {
         <motion.div
           className="relative flex items-center justify-center"
           whileTap={{ scale: animationScale }}
+          onClick={showCartHandler}
         >
           <MdShoppingBasket className="text-textColor text-2xl cursor-pointer" />
-          <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
-            <p className="text-xs text-white font-semibold">2</p>
-          </div>
+          {totalQuantity > 0 && (
+            <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
+              <p className="text-xs text-white font-semibold">
+                {totalQuantity}
+              </p>
+            </div>
+          )}
         </motion.div>
 
         <div className="relative">

@@ -1,8 +1,17 @@
 import React from "react";
 import { MdShoppingBasket } from "react-icons/md";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { userActivityActions } from "../../../store/userActivitySlice";
+import { setDataToLocalStorage } from "../../../utilities/localStorageMethods";
 
-const FoodRowItem = ({ imageSrc, name, price, calories }) => {
+const FoodRowItem = ({ food }) => {
+  const cart = useSelector((state) => state.userActivity.cart);
+  const dispatch = useDispatch();
+  const addToCart = () => {
+    dispatch(userActivityActions.addItemToCart(food));
+    setDataToLocalStorage("cart", cart);
+  };
   return (
     <div className="w-300 min-w-[300px] md:w-340 md:min-w-[340px] h-[225px] my-12 bg-cardOverlay rounded-lg p-4 hover:shadow-lg backdrop-blur-lg flex flex-col items-center justify-between">
       {/* image container */}
@@ -10,12 +19,13 @@ const FoodRowItem = ({ imageSrc, name, price, calories }) => {
         {/* image */}
         <motion.img
           whileHover={{ scale: 1.2 }}
-          src={imageSrc}
+          src={food.imageUrl}
           alt=""
-          className="w-40 -mt-8"
+          className="w-40 h-40 -mt-8 object-contain"
         />
         {/* cart button */}
         <motion.div
+          onClick={addToCart}
           whileTap={{ scale: 0.75 }}
           className="w-8 h-8 rounded-full bg-red-700 flex items-center justify-center cursor-pointer hover:shadow-md"
         >
@@ -25,13 +35,13 @@ const FoodRowItem = ({ imageSrc, name, price, calories }) => {
       {/* food details */}
       <div className="w-full flex flex-col items-end justify-end">
         {/* name */}
-        <p className="text-textColor text-base md:text-lg">{name}</p>
+        <p className="text-textColor text-base md:text-lg">{food.title}</p>
         {/* calories */}
-        <p className="mt-1 text-sm text-gray-500">{calories} Calories</p>
+        <p className="mt-1 text-sm text-gray-500">{food.calories} Calories</p>
         {/* price */}
         <div className="flex items-center gap-8">
           <p className="text-lg text-textColor font-semibold">
-            <span>₹ {price}</span>
+            <span>₹ {food.price}</span>
           </p>
         </div>
       </div>

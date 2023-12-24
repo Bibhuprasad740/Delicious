@@ -1,8 +1,8 @@
-export const fetchUserFromLocalStorage = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  return user ?? null;
+export const fetchDataFromLocalStorage = (key) => {
+  const data = JSON.parse(localStorage.getItem(key));
+  return data ?? null;
 };
 
-export const setUserToLocalStorage = (user) => {
-  localStorage.setItem("user", JSON.stringify(user));
+export const setDataToLocalStorage = (key, data) => {
+  localStorage.setItem(key, JSON.stringify(data));
 };

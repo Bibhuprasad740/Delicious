@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchDataFromLocalStorage } from "../utilities/localStorageMethods";
 
 const userActivityInitialState = {
-  cart: {
-    items: [],
-    totalQuantity: 0,
-    changed: false,
-  },
+  cart: fetchDataFromLocalStorage("cart") ?? [],
+  totalQuantity: 0,
+  changed: false,
+  totalPrice: 0,
+  cartShowState: false,
   recentlyViewedProducts: [],
 };
 
@@ -16,6 +17,57 @@ const userActivitySlice = createSlice({
     replaceCart(state, action) {
       state.cart.items = action.payload.items;
       state.cart.totalQuantity = action.payload.totalQuantity;
+    },
+    showCart(state) {
+      state.cartShowState = true;
+    },
+    hideCart(state) {
+      state.cartShowState = false;
+    },
+    setCart(state, action) {
+      state.cart = action.payload;
+      for (let i = 0; i < action.payload.length; i++) {
+        state.totalQuantity += action.payload[i].quantity;
+        state.totalPrice += action.payload[i].totalPrice;
+      }
+    },
+    addItemToCart(state, action) {
+      const newItem = action.payload;
+      state.totalPrice += parseInt(newItem.price);
+      state.totalQuantity++;
+      state.changed = true;
+
+      const existingItem = state.cart.find((item) => item.id === newItem.id);
+      if (!existingItem) {
+        state.cart.push({
+          ...newItem,
+          totalPrice: parseInt(newItem.price),
+        });
+      } else {
+        existingItem.quantity++;
+        existingItem.totalPrice += parseInt(newItem.price);
+      }
+    },
+    removeItemFromCart(state, action) {
+      const id = action.payload;
+      state.totalQuantity--;
+      state.changed = true;
+
+      let existingItem = null;
+      for (let i = 0; i < state.cart.length; i++) {
+        if (state.cart[i].id === id) {
+          existingItem = state.cart[i];
+          break;
+        }
+      }
+      // console.log(existingItem);
+      state.totalPrice -= parseInt(existingItem.price);
+      if (existingItem.quantity === 1) {
+        state.cart = state.cart.filter((item) => item.id !== id);
+      } else {
+        existingItem.quantity--;
+        existingItem.totalPrice -= parseInt(existingItem.price);
+      }
     },
   },
 });

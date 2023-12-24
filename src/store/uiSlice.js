@@ -5,8 +5,8 @@ const initialUiState = {
   alertStatus: "danger",
   alertMessage: null,
   isLoading: false,
-  foodRowRef: null,
   currentSelectedCategory: "chicken",
+  cartShowState: false,
 };
 
 const uiSlice = createSlice({
@@ -25,11 +25,11 @@ const uiSlice = createSlice({
     setIsLoading(state, action) {
       state.isLoading = action.payload;
     },
-    setFoodRowRef(state, action) {
-      state.foodRowRef = action.payload;
-    },
     setCurrentSelectedCategory(state, action) {
       state.currentSelectedCategory = action.payload;
+    },
+    showCart(state) {
+      state.cartShowState = true;
     },
   },
 });

@@ -6,6 +6,11 @@ import { getAllFoods } from "../utilities/firebaseMethods";
 import { useDispatch } from "react-redux";
 
 import { foodsActions } from "../store/foodsSlice";
+import {
+  fetchDataFromLocalStorage,
+  setDataToLocalStorage,
+} from "../utilities/localStorageMethods";
+import { userActivityActions } from "../store/userActivitySlice";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -14,6 +19,13 @@ const HomePage = () => {
     const fetchFoodsFromDatabase = async () => {
       const foods = await getAllFoods();
       dispatch(foodsActions.setFoods(foods));
+
+      const cart = fetchDataFromLocalStorage("cart");
+      if (!cart) {
+        setDataToLocalStorage("cart", []);
+      } else {
+        dispatch(userActivityActions.setCart(cart));
+      }
     };
 
     fetchFoodsFromDatabase();

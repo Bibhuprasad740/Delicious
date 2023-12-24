@@ -10,7 +10,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { setUserToLocalStorage } from "../../utilities/localStorageMethods";
+import { setDataToLocalStorage } from "../../utilities/localStorageMethods";
 import PcLayout from "./PcLayout";
 import MobileLayout from "./MobileLayout";
 
@@ -29,7 +29,7 @@ const Header = () => {
       // const refreshToken = FirebaseUserData.refreshToken;
 
       dispatch(authActions.setUser(user));
-      setUserToLocalStorage(user);
+      setDataToLocalStorage("user", user);
     } catch (error) {
       console.log(error.message);
     }
