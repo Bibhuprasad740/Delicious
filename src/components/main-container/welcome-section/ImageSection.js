@@ -1,11 +1,11 @@
 import React from "react";
-import BackgroundImage from "../../assets/images/heroBg.png";
+import BackgroundImage from "../../../assets/images/heroBg.png";
 import FoodCard from "./FoodCard";
 
 import { useDispatch } from "react-redux";
-import { uiActions } from "../../store/uiSlice";
+import { uiActions } from "../../../store/uiSlice";
 
-import { DUMMY_FOOD_DATA } from "../../DummyData";
+import { DUMMY_FOOD_DATA } from "../../../DummyData";
 
 const ImageSection = () => {
   const dispatch = useDispatch();
@@ -17,8 +17,8 @@ const ImageSection = () => {
       {/* bg image */}
       <img
         src={BackgroundImage}
-        alt="hero-bg"
-        className="h-[510] lg:h-650 w-full lg:w-auto ml-auto"
+        alt="backgroundImage"
+        className="h-[400px] lg:h-650 w-full lg:w-auto ml-auto"
       />
 
       {/* food cards */}

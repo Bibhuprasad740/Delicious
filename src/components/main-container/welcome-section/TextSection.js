@@ -1,7 +1,7 @@
 import React from "react";
-import BikeImage from "../../assets/images/delivery.png";
+import BikeImage from "../../../assets/images/delivery.png";
 import { useDispatch } from "react-redux";
-import { uiActions } from "../../store/uiSlice";
+import { uiActions } from "../../../store/uiSlice";
 
 const TextSection = () => {
   const dispatch = useDispatch();

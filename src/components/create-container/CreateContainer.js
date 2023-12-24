@@ -24,7 +24,11 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { storage } from "../../firebase.config";
-import { saveFoodDataToFirestore } from "../../utilities/firebaseMethods";
+import {
+  getAllFoods,
+  saveFoodDataToFirestore,
+} from "../../utilities/firebaseMethods";
+import { foodsActions } from "../../store/foodsSlice";
 
 const isNotEmpty = (value) => value.trim() !== "";
 const isValidCategory = (category) => category !== "other" && category !== "";
@@ -185,6 +189,8 @@ const CreateContainer = () => {
 
       await saveFoodDataToFirestore(foodData);
 
+      await fetchFoodsFromDatabase();
+
       dispatch(uiActions.setAlertMessage("Product Added successfully!"));
       resetInput();
 
@@ -200,6 +206,11 @@ const CreateContainer = () => {
     }
 
     dispatch(uiActions.setIsLoading(false));
+  };
+
+  const fetchFoodsFromDatabase = async () => {
+    const foods = await getAllFoods();
+    dispatch(foodsActions.setFoods(foods));
   };
 
   return (
