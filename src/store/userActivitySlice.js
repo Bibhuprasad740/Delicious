@@ -69,6 +69,12 @@ const userActivitySlice = createSlice({
         existingItem.totalPrice -= parseInt(existingItem.price);
       }
     },
+    clearCart(state) {
+      state.cart = [];
+      state.totalPrice = 0;
+      state.totalQuantity = 0;
+      state.changed = true;
+    },
   },
 });
 

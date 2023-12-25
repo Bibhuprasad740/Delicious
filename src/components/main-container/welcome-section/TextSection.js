@@ -2,11 +2,15 @@ import React from "react";
 import BikeImage from "../../../assets/images/delivery.png";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../../../store/uiSlice";
+import { userActivityActions } from "../../../store/userActivitySlice";
 
 const TextSection = () => {
   const dispatch = useDispatch();
   const hideMenu = () => {
     dispatch(uiActions.hideMenu());
+  };
+  const orderNowHandler = () => {
+    dispatch(userActivityActions.showCart());
   };
   return (
     <div
@@ -43,6 +47,7 @@ const TextSection = () => {
       <button
         type="button"
         className="bg-gradient-to-br from-orange-400 to-orange-500 w-full md:w-auto px-4 py-2 rounded-lg hover:shadow-lg transition-all ease-in-out duration-100"
+        onClick={orderNowHandler}
       >
         Order Now!
       </button>

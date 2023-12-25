@@ -6,11 +6,13 @@ import { useDispatch } from "react-redux";
 import { uiActions } from "../../../store/uiSlice";
 
 import { DUMMY_FOOD_DATA } from "../../../DummyData";
+import { userActivityActions } from "../../../store/userActivitySlice";
 
 const ImageSection = () => {
   const dispatch = useDispatch();
   const hideMenu = () => {
     dispatch(uiActions.hideMenu());
+    dispatch(userActivityActions.hideCart());
   };
   return (
     <div className="py-2 flex-1 flex items-center relative" onClick={hideMenu}>

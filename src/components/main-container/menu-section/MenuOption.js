@@ -14,6 +14,7 @@ const MenuOption = ({ name, urlParse }) => {
     dispatch(uiActions.setCurrentSelectedCategory(urlParse));
   };
   return (
+    // Outer container
     <motion.div
       whileTap={{ scale: 0.75 }}
       className={`group w-24 min-w-[94px] h-24 cursor-pointer rounded-lg drop-shadow-lg flex flex-col gap-3 items-center justify-center ${
@@ -24,7 +25,7 @@ const MenuOption = ({ name, urlParse }) => {
       {/* Icon outer circle */}
       <div
         className={`w-10 h-10 rounded-full ${
-          selectedCategory === urlParse ? `bg-card` : `bg-red-700`
+          selectedCategory === urlParse ? `bg-gray-200` : `bg-red-700`
         } bg-red-700 group-hover:bg-card flex items-center justify-center`}
       >
         {/* Icon */}
