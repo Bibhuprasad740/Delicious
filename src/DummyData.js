@@ -1,6 +1,6 @@
 import Icecream from "./assets/images/i1.png";
 import Strawberry from "./assets/images/f1.png";
-import Chicken from "./assets/images/c1.png";
+import Chicken from "./assets/images/c4.png";
 import Fish from "./assets/images/fi1.png";
 
 export const DUMMY_FOOD_DATA = [

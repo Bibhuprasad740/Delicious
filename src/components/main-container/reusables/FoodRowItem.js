@@ -1,16 +1,13 @@
 import React from "react";
 import { MdShoppingBasket } from "react-icons/md";
 import { motion } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userActivityActions } from "../../../store/userActivitySlice";
-import { setDataToLocalStorage } from "../../../utilities/localStorageMethods";
 
 const FoodRowItem = ({ food }) => {
-  const cart = useSelector((state) => state.userActivity.cart);
   const dispatch = useDispatch();
   const addToCart = () => {
     dispatch(userActivityActions.addItemToCart(food));
-    setDataToLocalStorage("cart", cart);
   };
   return (
     <div className="w-300 min-w-[300px] md:w-340 md:min-w-[340px] h-[225px] my-12 bg-cardOverlay rounded-lg p-4 hover:shadow-lg backdrop-blur-lg flex flex-col items-center justify-between">

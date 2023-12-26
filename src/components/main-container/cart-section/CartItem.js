@@ -1,20 +1,16 @@
 import React from "react";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { motion } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userActivityActions } from "../../../store/userActivitySlice";
-import { setDataToLocalStorage } from "../../../utilities/localStorageMethods";
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.userActivity.cart);
   const addToCartHandler = () => {
     dispatch(userActivityActions.addItemToCart(item));
-    setDataToLocalStorage("cart", cart);
   };
   const removeFromCartHandler = () => {
     dispatch(userActivityActions.removeItemFromCart(item.id));
-    setDataToLocalStorage("cart", cart);
   };
   return (
     <div className="w-full p-1 px-2 bg-foodRow rounded-lg flex items-center gap-2">

@@ -25,7 +25,7 @@ const MenuOption = ({ name, urlParse }) => {
       {/* Icon outer circle */}
       <div
         className={`w-10 h-10 rounded-full ${
-          selectedCategory === urlParse ? `bg-gray-200` : `bg-red-700`
+          selectedCategory === urlParse ? `bg-card` : `bg-red-700`
         } bg-red-700 group-hover:bg-card flex items-center justify-center`}
       >
         {/* Icon */}

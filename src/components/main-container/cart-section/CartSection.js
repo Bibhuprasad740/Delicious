@@ -5,7 +5,6 @@ import { CartItem } from "../../index";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { userActivityActions } from "../../../store/userActivitySlice";
-import { setDataToLocalStorage } from "../../../utilities/localStorageMethods";
 
 import EmptyCart from "../../../assets/images/emptyCart.svg";
 
@@ -20,7 +19,6 @@ const CartSection = () => {
   };
 
   const clearCartHandler = () => {
-    setDataToLocalStorage("cart", []);
     dispatch(userActivityActions.clearCart());
   };
 

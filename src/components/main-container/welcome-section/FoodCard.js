@@ -1,4 +1,5 @@
 import React from "react";
+import { PiCurrencyInrBold } from "react-icons/pi";
 
 const FoodCard = (props) => {
   return (
@@ -14,8 +15,8 @@ const FoodCard = (props) => {
         {props.description}
       </p>
       {/* price */}
-      <p className="text-sm font-semibold text-headingColor">
-        <span className="text-xs text-red-600">₹</span>
+      <p className="text-lg font-semibold text-headingColor">
+        <PiCurrencyInrBold className="text-lg font-bold inline" />
         {props.price}
       </p>
     </div>

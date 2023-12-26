@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchDataFromLocalStorage } from "../utilities/localStorageMethods";
+import {
+  clearLocalStoreageForKey,
+  fetchDataFromLocalStorage,
+  setDataToLocalStorage,
+} from "../utilities/localStorageMethods";
 
 const userActivityInitialState = {
   cart: fetchDataFromLocalStorage("cart") ?? [],
@@ -47,6 +51,8 @@ const userActivitySlice = createSlice({
         existingItem.quantity++;
         existingItem.totalPrice += parseInt(newItem.price);
       }
+
+      setDataToLocalStorage("cart", state.cart);
     },
     removeItemFromCart(state, action) {
       const id = action.payload;
@@ -68,12 +74,15 @@ const userActivitySlice = createSlice({
         existingItem.quantity--;
         existingItem.totalPrice -= parseInt(existingItem.price);
       }
+
+      setDataToLocalStorage("cart", state.cart);
     },
     clearCart(state) {
       state.cart = [];
       state.totalPrice = 0;
       state.totalQuantity = 0;
       state.changed = true;
+      clearLocalStoreageForKey("cart");
     },
   },
 });
