@@ -58,12 +58,12 @@ const CartSection = () => {
       {/* cart container */}
       {cart.length > 0 && (
         <div className="w-full h-full flex flex-col">
-          <div className="w-full h-[500px] md:h-[550px] px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
+          <div className="w-full h-[500px] md:h-[550px] px-6 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
             {/* cart item */}
             {cart && cart.map((item) => <CartItem key={item.id} item={item} />)}
           </div>
           {/* cart total section*/}
-          <div className="w-full flex-1 flex flex-col items-center justify-evenly px-8 py-2">
+          <div className="w-full h-full flex-1 flex flex-col items-center justify-evenly px-8 py-2">
             {/* cart total */}
             <div className="w-full flex items-center justify-between">
               <p className="text-gray-600  text-lg">Total</p>
