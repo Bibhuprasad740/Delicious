@@ -106,7 +106,7 @@ const Popup = () => {
             <motion.button
               whileTap={{ scale: 0.95 }}
               type="button"
-              className="w-full md:w-[50%] p-1 md:p-2 bg-gradient-to-tr rounded-lg from-orange-300 to-orange-500 text-gray-50 text-lg my-2 hover:shadow-lg "
+              className="w-full p-1 md:p-2 bg-gradient-to-tr rounded-lg from-orange-300 to-orange-500 text-gray-50 text-lg my-2 hover:shadow-lg "
               onClick={cancelHandler}
             >
               Ok
