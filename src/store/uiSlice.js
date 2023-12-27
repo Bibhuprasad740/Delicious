@@ -7,6 +7,7 @@ const initialUiState = {
   isLoading: false,
   currentSelectedCategory: "chicken",
   cartShowState: false,
+  showPopup: false,
 };
 
 const uiSlice = createSlice({
@@ -30,6 +31,15 @@ const uiSlice = createSlice({
     },
     showCart(state) {
       state.cartShowState = true;
+    },
+    hideCart(state) {
+      state.cartShowState = false;
+    },
+    showPopUp(state) {
+      state.showPopup = true;
+    },
+    hidePopUp(state) {
+      state.showPopup = false;
     },
   },
 });

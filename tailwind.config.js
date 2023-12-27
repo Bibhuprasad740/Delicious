@@ -57,6 +57,7 @@ module.exports = {
         cartItem: "#2e3033",
         cartTotal: "#343739",
         foodRow: "rgb(247,213,200, 0.2)",
+        backdrop: "rgba(0, 0, 0, 0.75)",
       },
     },
   },

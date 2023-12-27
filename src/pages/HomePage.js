@@ -3,7 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import { Outlet } from "react-router-dom";
 import { Header } from "../components/index";
 import { getAllFoods } from "../utilities/firebaseMethods";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { foodsActions } from "../store/foodsSlice";
 import {
@@ -11,9 +11,11 @@ import {
   setDataToLocalStorage,
 } from "../utilities/localStorageMethods";
 import { userActivityActions } from "../store/userActivitySlice";
+import Popup from "../components/Popup";
 
 const HomePage = () => {
   const dispatch = useDispatch();
+  const showPopup = useSelector((state) => state.ui.showPopup);
 
   useEffect(() => {
     const fetchFoodsFromDatabase = async () => {
@@ -33,6 +35,7 @@ const HomePage = () => {
 
   return (
     <AnimatePresence mode="wait">
+      {showPopup && <Popup />}
       <div className="w-screen h-auto flex flex-col bg-primary">
         <Header />
         <main className="mt-14 md:mt-20 px-8 md:px-16 py-4 p-8 w-full">

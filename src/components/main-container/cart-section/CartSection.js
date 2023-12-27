@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userActivityActions } from "../../../store/userActivitySlice";
 
 import EmptyCart from "../../../assets/images/emptyCart.svg";
+import { uiActions } from "../../../store/uiSlice";
 
 const CartSection = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,11 @@ const CartSection = () => {
 
   const clearCartHandler = () => {
     dispatch(userActivityActions.clearCart());
+  };
+
+  const orderNowHandler = () => {
+    dispatch(uiActions.hideCart());
+    dispatch(uiActions.showPopUp());
   };
 
   const emptyCartComponent = (
@@ -58,12 +64,12 @@ const CartSection = () => {
       {/* cart container */}
       {cart.length > 0 && (
         <div className="w-full h-full flex flex-col">
-          <div className="w-full h-[500px] md:h-[550px] px-6 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
+          <div className="w-full h-[60%] px-6 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
             {/* cart item */}
             {cart && cart.map((item) => <CartItem key={item.id} item={item} />)}
           </div>
           {/* cart total section*/}
-          <div className="w-full h-full flex-1 flex flex-col items-center justify-evenly px-8 py-2">
+          <div className="w-full h-full flex-1 flex flex-col items-center justify-start px-8 py-2">
             {/* cart total */}
             <div className="w-full flex items-center justify-between">
               <p className="text-gray-600  text-lg">Total</p>
@@ -86,6 +92,7 @@ const CartSection = () => {
               whileTap={{ scale: 0.9 }}
               type="button"
               className="w-full p-2 bg-gradient-to-tr rounded-lg from-orange-300 to-orange-500 text-gray-50 text-lg my-2 hover:shadow-lg "
+              onClick={orderNowHandler}
             >
               Order Now!
             </motion.button>
