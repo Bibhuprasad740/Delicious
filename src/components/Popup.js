@@ -100,7 +100,7 @@ const Popup = () => {
       <div className="p-4">
         {success && (
           <>
-            <p className="font-semibold text-green-800 capitalize">
+            <p className="font-semibold text-center text-green-800 capitalize">
               Order Placed Successfully
             </p>
             <motion.button
