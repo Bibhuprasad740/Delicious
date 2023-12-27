@@ -99,19 +99,19 @@ const Popup = () => {
     <Modal>
       <div className="p-4">
         {success && (
-          <>
+          <div className="flex flex-col justify-center items-center">
             <p className="font-semibold text-center text-green-800 capitalize">
               Order Placed Successfully
             </p>
             <motion.button
               whileTap={{ scale: 0.95 }}
               type="button"
-              className="w-full p-1 md:p-2 bg-gradient-to-tr rounded-lg from-orange-300 to-orange-500 text-gray-50 text-lg my-2 hover:shadow-lg "
+              className="w-full p-1 md:p-2 md:w-[20vw] bg-gradient-to-tr rounded-lg from-orange-300 to-orange-500 text-gray-50 text-lg my-2 hover:shadow-lg "
               onClick={cancelHandler}
             >
               Ok
             </motion.button>
-          </>
+          </div>
         )}
         {!success && (
           <>
